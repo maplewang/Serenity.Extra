@@ -174,7 +174,7 @@ public partial class Startup
 
     public static void RegisterDataProviders()
     {
-        DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
+        DbProviderFactories.RegisterFactory("Microsoft.Data.SqlClient", SqlClientFactory.Instance);
         DbProviderFactories.RegisterFactory("Microsoft.Data.SqlClient", SqlClientFactory.Instance);
         DbProviderFactories.RegisterFactory("Microsoft.Data.Sqlite", Microsoft.Data.Sqlite.SqliteFactory.Instance);
 

@@ -20,7 +20,7 @@ public static partial class DbConnectionExtentions
             .Select(nameField ?? row.NameField)
             .Where(((Field)row.IdField).Name + '=' + id);
 
-        using (var reader = SqlHelper.ExecuteReader(connection, query))
+        using (var reader = SqlHelper.ExecuteReader((SqlQuery)connection, (IDbConnection)query))
             while (reader.Read())
                 return reader.AsString(0);
 
@@ -40,7 +40,7 @@ public static partial class DbConnectionExtentions
             .Where(((Field)row.NameField).Name + "=" + name.Trim().ToSql())
             .Take(1);
 
-        using (var reader = SqlHelper.ExecuteReader(connection, query))
+        using (var reader = SqlHelper.ExecuteReader((SqlQuery)connection, (IDbConnection)query))
             while (reader.Read())
                 return reader.GetValue(0);
 
@@ -101,7 +101,7 @@ public static partial class DbConnectionExtentions
 
         if (orderByField != null) query.OrderBy(orderByField, desc);
 
-        using (var reader = SqlHelper.ExecuteReader(connection, query))
+        using (var reader = SqlHelper.ExecuteReader((SqlQuery)connection, (IDbConnection)query))
             while (reader.Read())
                 return reader.GetValue(0);
 
